@@ -1,0 +1,513 @@
+/* ============================================================
+   DEPARTMENTS PAGE — PSI PHI INDIA
+   ============================================================ */
+
+/* --- Design Tokens (scoped) --- */
+.departments-page {
+  --primary: #1a3a5c;
+  --primary-light: #2a5a8c;
+  --accent: #e8a838;
+  --accent-light: #f0c060;
+  --dark: #0d1b2a;
+  --dark-surface: #1b2d44;
+  --light: #f8f9fa;
+  --text-primary: #1a1a2e;
+  --text-secondary: #6b7280;
+
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
+  --transition-base: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================================
+   PAGE HERO
+   ============================================================ */
+.departments-page .page-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.departments-page .page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 27, 42, 0.88) 0%,
+    rgba(26, 58, 92, 0.78) 50%,
+    rgba(13, 27, 42, 0.88) 100%
+  );
+  z-index: 1;
+}
+
+.departments-page .page-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  padding: 60px 24px;
+}
+
+.departments-page .page-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.departments-page .page-hero-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 2px;
+  margin: 18px auto 0;
+}
+
+.departments-page .page-hero-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================================
+   SECTION TITLES & DESCRIPTIONS
+   ============================================================ */
+.departments-page .section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin: 0 0 12px;
+  letter-spacing: -0.015em;
+}
+
+.departments-page .section-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  border-radius: 2px;
+  margin: 14px auto 0;
+}
+
+.departments-page .section-title--light {
+  color: #fff;
+}
+
+.departments-page .section-description {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 600px;
+  margin: 20px auto 48px;
+  line-height: 1.7;
+}
+
+.departments-page .section-description--light {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================================
+   DEPARTMENTS SECTION
+   ============================================================ */
+.departments-page .departments-section {
+  padding: 80px 24px;
+  background: var(--light);
+}
+
+.departments-page .departments-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   DEPARTMENTS GRID
+   ============================================================ */
+.departments-page .departments-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* ============================================================
+   DEPARTMENT CARD
+   ============================================================ */
+.departments-page .department-card {
+  position: relative;
+  background: #fff;
+  border-radius: var(--radius-md);
+  padding: 36px 30px 32px;
+  border-left: 4px solid var(--accent);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.departments-page .department-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: var(--shadow-card-hover);
+  border-left-color: var(--accent-light);
+}
+
+/* --- Department Icon --- */
+.departments-page .dept-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform var(--transition-base);
+}
+
+.departments-page .department-card:hover .dept-icon {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.departments-page .dept-icon svg {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+}
+
+/* --- Department Info --- */
+.departments-page .dept-info h3 {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+.departments-page .dept-info p {
+  font-family: var(--font-body);
+  font-size: 0.935rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+/* --- Department Highlights List --- */
+.departments-page .dept-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.departments-page .dept-highlights li {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--primary);
+  background: rgba(26, 58, 92, 0.07);
+  padding: 5px 12px;
+  border-radius: 20px;
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+.departments-page .department-card:hover .dept-highlights li {
+  background: rgba(232, 168, 56, 0.12);
+  color: var(--dark);
+}
+
+/* ============================================================
+   LEADERSHIP SECTION
+   ============================================================ */
+.departments-page .leadership-section {
+  padding: 90px 24px;
+  background: linear-gradient(160deg, var(--dark) 0%, var(--dark-surface) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle decorative glow */
+.departments-page .leadership-section::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(232, 168, 56, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.departments-page .leadership-section .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* --- Leader Card --- */
+.departments-page .leader-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 50px 40px;
+  gap: 28px;
+}
+
+/* --- Leader Avatar --- */
+.departments-page .leader-avatar {
+  flex-shrink: 0;
+}
+
+.departments-page .leader-avatar-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  border: 3px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 6px rgba(232, 168, 56, 0.15);
+  transition: box-shadow var(--transition-base);
+}
+
+.departments-page .leader-card:hover .leader-avatar-placeholder {
+  box-shadow: 0 0 0 10px rgba(232, 168, 56, 0.2);
+}
+
+.departments-page .leader-avatar-placeholder svg {
+  width: 56px;
+  height: 56px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- Leader Info --- */
+.departments-page .leader-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.departments-page .leader-name {
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.departments-page .leader-title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.departments-page .leader-bio {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.75;
+  margin: 10px 0 18px;
+  max-width: 580px;
+}
+
+.departments-page .leader-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 10px 22px;
+  border: 1px solid rgba(232, 168, 56, 0.35);
+  border-radius: 30px;
+  transition:
+    background var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.departments-page .leader-email:hover {
+  background: var(--accent);
+  color: var(--dark);
+  border-color: var(--accent);
+}
+
+.departments-page .leader-email svg {
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   SCROLL REVEAL ANIMATION
+   ============================================================ */
+.departments-page .scroll-reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.departments-page .scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation for department cards */
+.departments-page .department-card.scroll-reveal:nth-child(1) { transition-delay: 0.05s; }
+.departments-page .department-card.scroll-reveal:nth-child(2) { transition-delay: 0.12s; }
+.departments-page .department-card.scroll-reveal:nth-child(3) { transition-delay: 0.19s; }
+.departments-page .department-card.scroll-reveal:nth-child(4) { transition-delay: 0.26s; }
+.departments-page .department-card.scroll-reveal:nth-child(5) { transition-delay: 0.33s; }
+.departments-page .department-card.scroll-reveal:nth-child(6) { transition-delay: 0.40s; }
+
+/* ============================================================
+   RESPONSIVE — TABLET (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+  .departments-page .page-hero {
+    min-height: 340px;
+  }
+
+  .departments-page .page-hero-content {
+    padding: 48px 20px;
+  }
+
+  .departments-page .departments-section {
+    padding: 60px 20px;
+  }
+
+  .departments-page .departments-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .departments-page .department-card {
+    padding: 28px 24px 26px;
+  }
+
+  .departments-page .leadership-section {
+    padding: 64px 20px;
+  }
+
+  .departments-page .leader-card {
+    padding: 40px 28px;
+  }
+
+  .departments-page .leader-name {
+    font-size: 1.45rem;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (≤ 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+  .departments-page .page-hero {
+    min-height: 280px;
+  }
+
+  .departments-page .page-hero-content {
+    padding: 40px 16px;
+  }
+
+  .departments-page .departments-section {
+    padding: 48px 16px;
+  }
+
+  .departments-page .departments-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .departments-page .department-card {
+    padding: 24px 20px 22px;
+  }
+
+  .departments-page .dept-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .departments-page .dept-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .departments-page .dept-info h3 {
+    font-size: 1.15rem;
+  }
+
+  .departments-page .section-description {
+    margin-bottom: 36px;
+  }
+
+  .departments-page .leadership-section {
+    padding: 48px 16px;
+  }
+
+  .departments-page .leader-card {
+    padding: 32px 20px;
+  }
+
+  .departments-page .leader-avatar-placeholder {
+    width: 100px;
+    height: 100px;
+  }
+
+  .departments-page .leader-avatar-placeholder svg {
+    width: 44px;
+    height: 44px;
+  }
+
+  .departments-page .leader-name {
+    font-size: 1.3rem;
+  }
+
+  .departments-page .leader-bio {
+    font-size: 0.92rem;
+  }
+
+  .departments-page .leader-email {
+    font-size: 0.88rem;
+    padding: 8px 18px;
+  }
+}
