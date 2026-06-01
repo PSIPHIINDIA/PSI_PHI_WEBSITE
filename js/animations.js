@@ -14,12 +14,11 @@ class ScrollReveal {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
-                    // Don't unobserve — keep for re-navigation
                 }
             });
         }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.05,
+            rootMargin: '0px 0px 0px 0px'
         });
     }
 
@@ -34,7 +33,7 @@ class ScrollReveal {
         setTimeout(() => {
             document.querySelectorAll('.scroll-reveal').forEach(el => {
                 const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.95) {
+                if (rect.top < window.innerHeight) {
                     el.classList.add('revealed');
                 }
             });
