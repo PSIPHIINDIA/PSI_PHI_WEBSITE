@@ -600,6 +600,16 @@ p {
     color: var(--accent);
 }
 
+.footer-contact-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    line-height: 0;
+}
+
+.footer-contact-icon:hover svg {
+    color: var(--accent-light);
+}
+
 .footer-bottom {
     padding: var(--space-xl) 0;
 }
