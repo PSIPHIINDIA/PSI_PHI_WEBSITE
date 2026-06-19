@@ -8,6 +8,7 @@
     // Configure routes
     const router = window.router;
     router.addRoute('home', 'pages/home.html');
+    router.addRoute('about', 'pages/about.html');
     router.addRoute('products', 'pages/products.html');
     router.addRoute('departments', 'pages/departments.html');
     router.addRoute('contact', 'pages/contact.html');
@@ -34,7 +35,7 @@
     // Determine initial page from hash
     function getInitialPage() {
         const hash = window.location.hash.replace('#', '');
-        const validPages = ['home', 'products', 'departments', 'contact'];
+        const validPages = ['home', 'about', 'products', 'departments', 'contact'];
         return validPages.includes(hash) ? hash : 'home';
     }
 

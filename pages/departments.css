@@ -243,130 +243,6 @@
 }
 
 /* ============================================================
-   LEADERSHIP SECTION
-   ============================================================ */
-.departments-page .leadership-section {
-  padding: 90px 24px;
-  background: linear-gradient(160deg, var(--dark) 0%, var(--dark-surface) 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Subtle decorative glow */
-.departments-page .leadership-section::before {
-  content: '';
-  position: absolute;
-  top: -120px;
-  right: -120px;
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, rgba(232, 168, 56, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.departments-page .leadership-section .container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* --- Leader Card --- */
-.departments-page .leader-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-lg);
-  padding: 50px 40px;
-  gap: 28px;
-}
-
-/* --- Leader Avatar --- */
-.departments-page .leader-avatar {
-  flex-shrink: 0;
-}
-
-.departments-page .leader-avatar-img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 3px solid var(--accent);
-  object-fit: cover;
-  box-shadow: 0 0 0 6px rgba(232, 168, 56, 0.15);
-  transition: box-shadow var(--transition-base);
-}
-
-.departments-page .leader-card:hover .leader-avatar-img {
-  box-shadow: 0 0 0 10px rgba(232, 168, 56, 0.2);
-}
-
-/* --- Leader Info --- */
-.departments-page .leader-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-
-.departments-page .leader-name {
-  font-family: var(--font-heading);
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-}
-
-.departments-page .leader-title {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.departments-page .leader-bio {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.72);
-  line-height: 1.75;
-  margin: 10px 0 18px;
-  max-width: 580px;
-}
-
-.departments-page .leader-email {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--accent);
-  text-decoration: none;
-  padding: 10px 22px;
-  border: 1px solid rgba(232, 168, 56, 0.35);
-  border-radius: 30px;
-  transition:
-    background var(--transition-base),
-    color var(--transition-base),
-    border-color var(--transition-base);
-}
-
-.departments-page .leader-email:hover {
-  background: var(--accent);
-  color: var(--dark);
-  border-color: var(--accent);
-}
-
-.departments-page .leader-email svg {
-  flex-shrink: 0;
-}
-
-/* ============================================================
    SCROLL REVEAL ANIMATION
    ============================================================ */
 .departments-page .scroll-reveal {
@@ -422,18 +298,6 @@
   .departments-page .department-card {
     padding: 28px 24px 26px;
   }
-
-  .departments-page .leadership-section {
-    padding: 64px 20px;
-  }
-
-  .departments-page .leader-card {
-    padding: 40px 28px;
-  }
-
-  .departments-page .leader-name {
-    font-size: 1.45rem;
-  }
 }
 
 /* ============================================================
@@ -477,31 +341,5 @@
 
   .departments-page .section-description {
     margin-bottom: 36px;
-  }
-
-  .departments-page .leadership-section {
-    padding: 48px 16px;
-  }
-
-  .departments-page .leader-card {
-    padding: 32px 20px;
-  }
-
-  .departments-page .leader-avatar-img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .departments-page .leader-name {
-    font-size: 1.3rem;
-  }
-
-  .departments-page .leader-bio {
-    font-size: 0.92rem;
-  }
-
-  .departments-page .leader-email {
-    font-size: 0.88rem;
-    padding: 8px 18px;
   }
 }
