@@ -110,7 +110,7 @@ class Router {
         // -------------------------------------------------------
         // FORMSPREE SETUP:
         // 1. Go to https://formspree.io and create a free account
-        // 2. Create a new form for psiphiindia@gmail.com
+        // 2. Create a new form for vikas@psiphi.in
         // 3. Replace YOUR_FORMSPREE_ID below with your form's ID
         //    (looks like: xyzabcde)
         // -------------------------------------------------------
@@ -164,7 +164,7 @@ class Router {
             } catch (err) {
                 btn.classList.remove('loading');
                 btn.disabled = false;
-                alert('Sorry, there was a problem sending your message. Please email us directly at psiphiindia@gmail.com');
+                alert('Sorry, there was a problem sending your message. Please email us directly at vikas@psiphi.in');
             }
         });
 
