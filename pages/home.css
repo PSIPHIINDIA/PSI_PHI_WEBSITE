@@ -600,6 +600,164 @@
     animation-delay: 2s;
 }
 
+/* ---------- Leadership (Home) ---------- */
+.leadership-home {
+    background: linear-gradient(160deg, var(--dark) 0%, var(--dark-surface) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.leadership-home::before {
+    content: '';
+    position: absolute;
+    top: -140px;
+    right: -120px;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(232, 168, 56, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.leadership-home-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: var(--space-4xl);
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.leadership-home-image {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+}
+
+.leadership-home-image img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+}
+
+.leadership-home-badge {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: var(--dark);
+    padding: 8px 18px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.leadership-home-content h2 {
+    color: var(--text-light);
+    margin-bottom: var(--space-lg);
+}
+
+.leadership-home-vision {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding-left: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.leadership-home-text {
+    color: rgba(255, 255, 255, 0.72) !important;
+    line-height: 1.8 !important;
+    margin-bottom: var(--space-lg);
+}
+
+.leadership-home-creds {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-xl);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm) var(--space-lg);
+}
+
+.leadership-home-creds li {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    padding-left: 26px;
+    position: relative;
+}
+
+.leadership-home-creds li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* ---------- Products Teaser (Home) ---------- */
+.products-teaser {
+    background: var(--light-surface);
+}
+
+.product-highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+}
+
+.product-highlight {
+    background: var(--light);
+    border: 1px solid var(--light-muted);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    transition: all var(--transition-base);
+}
+
+.product-highlight:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(232, 168, 56, 0.3);
+}
+
+.product-highlight-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border-radius: var(--radius-md);
+    color: var(--text-light);
+    margin-bottom: var(--space-md);
+}
+
+.product-highlight h3 {
+    color: var(--primary);
+    font-size: 1.15rem;
+    margin-bottom: var(--space-xs);
+}
+
+.product-highlight p {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.products-teaser-cta {
+    text-align: center;
+    margin-top: var(--space-2xl);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
     .services-grid {
@@ -608,6 +766,10 @@
     }
 
     .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-highlight-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -623,6 +785,19 @@
     }
 
     .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .leadership-home-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+
+    .leadership-home-image {
+        max-width: 360px;
+    }
+
+    .product-highlight-grid {
         grid-template-columns: 1fr;
     }
 
