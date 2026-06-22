@@ -471,7 +471,8 @@
 
 /* ---------- CLIENTS SHOWCASE SECTION ---------- */
 .clients-section {
-  background: var(--light);
+  background: var(--light-surface);
+  overflow: hidden;
 }
 
 .clients-grid {
