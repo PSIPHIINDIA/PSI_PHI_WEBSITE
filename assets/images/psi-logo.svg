@@ -1,29 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 260" fill="#000" stroke="#000">
-  <!-- === TOP: Psi trident === -->
-  <!-- Central vertical stem -->
-  <line x1="80" y1="8" x2="80" y2="135" stroke-width="10" stroke-linecap="round"/>
-  <!-- Left prong curving outward -->
-  <path d="M80 80 Q55 65 50 35 Q48 20 55 10" stroke-width="9" fill="none" stroke-linecap="round"/>
-  <!-- Right prong curving outward -->
-  <path d="M80 80 Q105 65 110 35 Q112 20 105 10" stroke-width="9" fill="none" stroke-linecap="round"/>
-  <!-- Small rounded tips on prongs -->
-  <circle cx="55" cy="9" r="5.5"/>
-  <circle cx="105" cy="9" r="5.5"/>
-  <circle cx="80" cy="8" r="5.5"/>
-  <!-- Horizontal crossbar -->
-  <line x1="42" y1="88" x2="118" y2="88" stroke-width="7" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 260" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+  <!-- ===== Trident (Ψ) ===== -->
+  <!-- Central stem (full vertical axis) -->
+  <line x1="80" y1="26" x2="80" y2="230"/>
+  <!-- Bowl with side prongs -->
+  <path d="M34 34 C30 74 46 116 80 118 C114 116 130 74 126 34"/>
+  <!-- Outward-flared prong tips -->
+  <path d="M34 34 C30 24 24 22 18 26"/>
+  <path d="M126 34 C130 24 136 22 142 26"/>
+  <!-- Center tip cap -->
+  <circle cx="80" cy="26" r="6" fill="#000" stroke="none"/>
 
-  <!-- === BOTTOM: Cup / Chalice === -->
-  <!-- Outer left parenthesis ( -->
-  <path d="M30 110 Q15 155 38 195" stroke-width="8" fill="none" stroke-linecap="round"/>
-  <!-- Outer right parenthesis ) -->
-  <path d="M130 110 Q145 155 122 195" stroke-width="8" fill="none" stroke-linecap="round"/>
-  <!-- Inner U-shaped cup -->
-  <path d="M52 120 Q52 180 80 185 Q108 180 108 120" stroke-width="7" fill="none" stroke-linecap="round"/>
-  <!-- Small circle inside the cup -->
-  <circle cx="80" cy="160" r="6" fill="none" stroke-width="5"/>
-  <!-- Vertical stem below cup -->
-  <line x1="80" y1="195" x2="80" y2="248" stroke-width="9" stroke-linecap="round"/>
-  <!-- Base foot -->
-  <line x1="62" y1="248" x2="98" y2="248" stroke-width="8" stroke-linecap="round"/>
+  <!-- ===== Concentric ripple rings ===== -->
+  <ellipse cx="80" cy="174" rx="55" ry="23" stroke-width="9"/>
+  <ellipse cx="80" cy="172" rx="27" ry="10" stroke-width="8"/>
+
+  <!-- ===== Base foot ===== -->
+  <line x1="62" y1="230" x2="98" y2="230" stroke-width="9"/>
 </svg>
