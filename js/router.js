@@ -38,8 +38,22 @@ class Router {
         return route.content;
     }
 
+    updateUrl(pageName) {
+        if (pageName === 'home') {
+            // Clean URL on the home page — strip the #home hash entirely
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+        } else if (window.location.hash !== '#' + pageName) {
+            window.location.hash = pageName;
+        }
+    }
+
     async navigate(pageName) {
-        if (this.isTransitioning || pageName === this.currentPage) return;
+        if (this.isTransitioning) return;
+        if (pageName === this.currentPage) {
+            // Already on this page — just normalise the URL (e.g. remove #home)
+            this.updateUrl(pageName);
+            return;
+        }
         this.isTransitioning = true;
 
         // Update nav links
@@ -93,8 +107,8 @@ class Router {
 
         this.isTransitioning = false;
 
-        // Update hash
-        window.location.hash = pageName;
+        // Update URL (clean path for home, #hash for inner pages)
+        this.updateUrl(pageName);
     }
 
     initPageFeatures(pageName) {

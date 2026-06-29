@@ -41,8 +41,9 @@
 
     // Handle hash changes
     window.addEventListener('hashchange', () => {
-        const page = window.location.hash.replace('#', '');
-        if (page && router.routes[page]) {
+        // Empty hash (e.g. back button to the clean home URL) maps to home
+        const page = window.location.hash.replace('#', '') || 'home';
+        if (router.routes[page]) {
             router.navigate(page);
         }
     });
