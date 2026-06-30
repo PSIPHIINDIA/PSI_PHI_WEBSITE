@@ -130,29 +130,7 @@ class NavbarEffect {
     }
 }
 
-/* ---------- Smooth Page Links ---------- */
-class PageLinks {
-    constructor() {
-        this.init();
-    }
-
-    init() {
-        // Handle all clicks on elements with data-page attribute
-        document.addEventListener('click', (e) => {
-            const link = e.target.closest('[data-page]');
-            if (link) {
-                e.preventDefault();
-                const pageName = link.dataset.page;
-                if (window.router) {
-                    window.router.navigate(pageName);
-                }
-            }
-        });
-    }
-}
-
 // Create global instances
 window.scrollReveal = new ScrollReveal();
 window.statsCounter = new StatsCounter();
 window.navbarEffect = new NavbarEffect();
-window.pageLinks = new PageLinks();

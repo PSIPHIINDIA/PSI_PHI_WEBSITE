@@ -1,17 +1,10 @@
 /* ==========================================
    App Entry Point — PSI PHI INDIA Website
+   Multi-page (static) site — no client-side router.
    ========================================== */
 
 (function() {
     'use strict';
-
-    // Configure routes
-    const router = window.router;
-    router.addRoute('home', 'pages/home.html');
-    router.addRoute('about', 'pages/about.html');
-    router.addRoute('products', 'pages/products.html');
-    router.addRoute('departments', 'pages/departments.html');
-    router.addRoute('contact', 'pages/contact.html');
 
     // Mobile menu toggle
     const navToggle = document.getElementById('navToggle');
@@ -32,41 +25,101 @@
         });
     }
 
-    // Determine initial page from hash
-    function getInitialPage() {
-        const hash = window.location.hash.replace('#', '');
-        const validPages = ['home', 'about', 'products', 'departments', 'contact'];
-        return validPages.includes(hash) ? hash : 'home';
+    // Per-page initialisation
+    function initPage() {
+        if (window.scrollReveal) window.scrollReveal.observe();
+        if (window.statsCounter) window.statsCounter.init();
+        initContactForm();
     }
 
-    // Handle hash changes
-    window.addEventListener('hashchange', () => {
-        // Empty hash (e.g. back button to the clean home URL) maps to home
-        const page = window.location.hash.replace('#', '') || 'home';
-        if (router.routes[page]) {
-            router.navigate(page);
-        }
-    });
+    function initContactForm() {
+        const form = document.getElementById('contactForm');
+        if (!form) return;
 
-    // Initialize — single entry point, no double-fire
-    function startApp() {
-        const initialPage = getInitialPage();
-        router.navigate(initialPage);
+        // -------------------------------------------------------
+        // FORMSPREE: form submissions are sent to vikas@psiphi.in
+        // via this endpoint. Replace the ID to point elsewhere.
+        // -------------------------------------------------------
+        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xnjryzea';
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Basic validation
+            let valid = true;
+            const requiredFields = form.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                const group = field.closest('.form-group');
+                if (!field.value.trim()) {
+                    group?.classList.add('error');
+                    valid = false;
+                } else {
+                    group?.classList.remove('error');
+                }
+            });
+            if (!valid) return;
+
+            const btn = form.querySelector('.submit-btn');
+            if (!btn) return;
+
+            btn.classList.add('loading');
+            btn.disabled = true;
+
+            try {
+                const data = new FormData(form);
+                const response = await fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    btn.classList.remove('loading');
+                    btn.classList.add('success');
+                    setTimeout(() => {
+                        btn.classList.remove('success');
+                        btn.disabled = false;
+                        form.reset();
+                        form.querySelectorAll('.form-group').forEach(group => {
+                            group.classList.remove('filled', 'error');
+                        });
+                    }, 2500);
+                } else {
+                    throw new Error('Server error');
+                }
+            } catch (err) {
+                btn.classList.remove('loading');
+                btn.disabled = false;
+                alert('Sorry, there was a problem sending your message. Please email us directly at vikas@psiphi.in');
+            }
+        });
+
+        // Floating label behaviour
+        form.querySelectorAll('.form-input, .form-textarea, .form-select').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.closest('.form-group')?.classList.add('focused');
+            });
+
+            input.addEventListener('blur', () => {
+                const group = input.closest('.form-group');
+                group?.classList.remove('focused');
+                if (input.value) {
+                    group?.classList.add('filled');
+                } else {
+                    group?.classList.remove('filled');
+                }
+            });
+
+            if (input.value) {
+                input.closest('.form-group')?.classList.add('filled');
+            }
+        });
     }
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', startApp);
+        document.addEventListener('DOMContentLoaded', initPage);
     } else {
-        startApp();
+        initPage();
     }
-
-    // Preload all pages in background after initial load
-    setTimeout(() => {
-        Object.keys(router.routes).forEach(page => {
-            if (!router.routes[page].loaded) {
-                router.loadPage(page);
-            }
-        });
-    }, 2000);
 
 })();
